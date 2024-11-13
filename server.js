@@ -15,7 +15,9 @@ mongoose.connect(MONGO)
 .then(()=>{console.log("Connected to DB successfully.")})
 .catch(()=>console.log("Not connected to the database."))
 
-
+app.get('/',(req,res)=>{
+    res.send('server is working')
+})
 app.use("/api/use", postRoutes);
 
 app.use("/api/users", userRoutes);
