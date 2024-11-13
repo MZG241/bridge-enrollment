@@ -4,12 +4,14 @@ import { postRoutes } from './routes/postRoutes.js';
 import { userRoutes } from './routes/userRoutes.js';
 
 import mongoose from 'mongoose';
-
+import dotenv from "dotenv"
 const app = express();
 
+dotenv.config();
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://moukalazamg:Motsu241@applicant-api.bkjta.mongodb.net/?retryWrites=true&w=majority&appName=Applicant-Api")
+const MONGO = process.env.MONGO_URL
+mongoose.connect(MONGO)
 .then(()=>{console.log("Connected to DB successfully.")})
 .catch(()=>console.log("Not connected to the database."))
 
